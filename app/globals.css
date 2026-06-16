@@ -33,3 +33,54 @@ body {
   background: var(--color-warm);
   color: var(--color-ink);
 }
+@keyframes glow {
+  0%, 100% {
+    color: #E8E4DC;
+    text-shadow: 0 0 20px rgba(232,228,220,0.3);
+  }
+  50% {
+    color: #ffffff;
+    text-shadow: 0 0 40px rgba(232,228,220,0.8), 0 0 80px rgba(232,228,220,0.3);
+  }
+}
+
+.use-word {
+  animation: glow 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+.btn-glow {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FAFAFA;
+  text-decoration: none;
+  padding: 14px 28px;
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.btn-glow:hover {
+  border-color: #E8E4DC;
+  color: #E8E4DC;
+  text-shadow: 0 0 20px rgba(232,228,220,0.6), 0 0 40px rgba(232,228,220,0.3);
+}
+
+.btn-text {
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FAFAFA;
+  text-decoration: none;
+  opacity: 0.45;
+  transition: all 0.3s;
+}
+
+.btn-text:hover {
+  opacity: 1;
+  color: #E8E4DC;
+  text-shadow: 0 0 20px rgba(232,228,220,0.6);
+}
