@@ -1,7 +1,13 @@
 'use client'
 
+import Positioning from './components/Positioning'
+import AboutSnapshot from './components/AboutSnapshot'
+import Stats from './components/Stats'
+import Portfolio from './components/Portfolio'
+
 export default function Home() {
   return (
+    <>
     <main style={{
       minHeight: '100vh',
       display: 'flex',
@@ -129,5 +135,10 @@ export default function Home() {
       </div>
 
     </main>
+    <Positioning />
+    <Stats />
+    <AboutSnapshot />
+    <Portfolio />
+    </>
   )
 }
