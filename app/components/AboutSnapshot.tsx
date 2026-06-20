@@ -8,32 +8,29 @@ export default function AboutSnapshot() {
         maxWidth: '1100px',
         margin: '0 auto',
         display: 'grid',
-        gridTemplateColumns: '0.8fr 1fr',
-        gap: '64px',
+        gridTemplateColumns: '0.9fr 1fr',
+        gap: '48px',
         alignItems: 'center',
       }}>
 
-        {/* Image placeholder */}
+        {/* Photo */}
         <div style={{
           aspectRatio: '4 / 5',
-          background: '#141414',
+          overflow: 'hidden',
           border: '1px solid #2A2A2A',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
         }}>
-          <p style={{
-            fontFamily: '"IBM Plex Mono", monospace',
-            fontSize: '10px',
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            opacity: 0.2,
-          }}>
-            Photo Coming Soon
-          </p>
+          <img
+            src="/images/about.jpeg"
+            alt="Monique Hawkins"
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center top',
+            }}
+          />
         </div>
-
-        {/* Content */}
+          {/* Content */}
         <div>
           <p style={{
             fontFamily: '"IBM Plex Mono", monospace',

@@ -1,5 +1,8 @@
 'use client'
 
+import CTASection from './components/CTASection'
+import Footer from './components/Footer'
+import Insights from './components/Insights'
 import Positioning from './components/Positioning'
 import AboutSnapshot from './components/AboutSnapshot'
 import Stats from './components/Stats'
@@ -138,7 +141,10 @@ export default function Home() {
     <Positioning />
     <Stats />
     <AboutSnapshot />
+    <Insights />
     <Portfolio />
+    <CTASection />
+    <Footer />
     </>
   )
 }
