@@ -1,3 +1,4 @@
+'use client'
 export default function AboutPage() {
   return (
     <main style={{ background: 'var(--color-ink)', paddingTop: '120px' }}>
@@ -195,6 +196,158 @@ export default function AboutPage() {
           That has been my work for over 20 years. It still is.
         </p>
 
+      </section>
+
+      {/* ── Publications ──────────────────────────────────────────────── */}
+      <section style={{
+        padding: '80px 48px',
+        borderTop: '1px solid var(--color-border)',
+        maxWidth: '720px',
+        margin: '0 auto',
+      }}>
+
+        {/* Section label */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '20px',
+          marginBottom: '56px',
+        }}>
+          <p style={{
+            fontFamily: '"IBM Plex Mono", monospace',
+            fontSize: '11px',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            opacity: 0.4,
+            whiteSpace: 'nowrap',
+          }}>
+            Publications
+          </p>
+          <div style={{ flex: 1, height: '1px', background: 'var(--color-border)' }} />
+        </div>
+
+        {/* Card */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '180px 1fr',
+          border: '1px solid var(--color-border)',
+          background: 'var(--color-surface)',
+        }}>
+
+          {/* Cover */}
+          <div style={{
+            borderRight: '1px solid var(--color-border)',
+            background: 'var(--color-ink)',
+            display: 'flex',
+            alignItems: 'stretch',
+          }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/publications/Thrive_10_Ways_to_Help_Your_Child_Grow_and_Flourish.jpg"
+              alt="Thrive: 10 Ways to Help Your Child Grow and Flourish by Monique Hawkins"
+              style={{
+                width: '100%',
+                height: 'auto',
+                objectFit: 'contain',
+                display: 'block',
+              }}
+            />
+          </div>
+
+          {/* Content */}
+          <div style={{
+            padding: '32px 28px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '20px',
+          }}>
+
+            {/* Tag */}
+            <span style={{
+              display: 'inline-block',
+              fontFamily: '"IBM Plex Mono", monospace',
+              fontSize: '10px',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: 'var(--color-muted)',
+              border: '1px solid var(--color-border)',
+              padding: '3px 10px',
+              width: 'fit-content',
+            }}>
+              Published Author
+            </span>
+
+            {/* Title */}
+            <h2 style={{
+              fontFamily: '"IBM Plex Mono", monospace',
+              fontSize: 'clamp(15px, 2vw, 19px)',
+              fontWeight: 500,
+              lineHeight: 1.3,
+              color: 'var(--color-paper)',
+            }}>
+              Thrive: 10 Ways to Help Your Child Grow and Flourish
+            </h2>
+
+            {/* Pull */}
+            <p style={{
+              fontFamily: '"DM Serif Display", Georgia, serif',
+              fontStyle: 'italic',
+              fontSize: '15px',
+              lineHeight: 1.6,
+              color: 'rgba(250,250,250,0.55)',
+              borderLeft: '2px solid var(--color-border)',
+              paddingLeft: '16px',
+            }}>
+              The practical, honest guide a trusted teacher friend might hand you over coffee.
+            </p>
+
+            {/* Description */}
+            <p style={{
+              fontFamily: '"IBM Plex Mono", monospace',
+              fontSize: '12px',
+              lineHeight: 1.85,
+              color: 'var(--color-muted)',
+            }}>
+              10 actionable strategies for helping your child grow and flourish —
+              grounded in real-world experience as an educator, designed for
+              parents who want substance, not platitudes.
+            </p>
+
+            {/* Button */}
+            <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '20px', marginTop: 'auto' }}>
+              <a
+                href="https://www.amazon.com/dp/B0H6J2263Y"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontFamily: '"IBM Plex Mono", monospace',
+                  fontSize: '11px',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  color: 'var(--color-paper)',
+                  textDecoration: 'none',
+                  border: '1px solid rgba(255,255,255,0.25)',
+                  padding: '11px 22px',
+                  transition: 'all 0.2s',
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.background = 'var(--color-paper)'
+                  e.currentTarget.style.color = 'var(--color-ink)'
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.background = 'transparent'
+                  e.currentTarget.style.color = 'var(--color-paper)'
+                }}
+              >
+                View on Amazon →
+              </a>
+            </div>
+
+          </div>
+        </div>
       </section>
 
       {/* CTA */}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PickleballFloridaUSA.com — Project Showcase</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root { --coral: #FF6F61; --turquoise: #2CCCD3; --green: #2E8B57; --cream: #FFF7EB; --navy: #16324F; }
+body { font-family: 'Montserrat', sans-serif; background: #0d1f30; color: #fff; }
+
+header { background: var(--navy); padding: 4rem 2.5rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
+.eyebrow { font-size: 0.7rem; letter-spacing: 5px; text-transform: uppercase; color: var(--turquoise); margin-bottom: 1rem; }
+h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; margin-bottom: 1rem; line-height: 1.2; }
+h1 em { font-style: italic; color: var(--coral); }
+.tagline { font-size: 1.05rem; opacity: 0.7; font-weight: 300; max-width: 600px; margin: 0 auto 2rem; line-height: 1.8; }
+.visit-btn { display: inline-block; background: var(--coral); color: #fff; padding: 0.85rem 2.5rem; text-decoration: none; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; border-radius: 2px; }
+
+.section { max-width: 1100px; margin: 0 auto; padding: 5rem 2.5rem; }
+.section-label { font-size: 0.65rem; letter-spacing: 5px; text-transform: uppercase; color: var(--turquoise); margin-bottom: 0.75rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 0.75rem; }
+.section-sub { font-size: 0.95rem; opacity: 0.6; font-weight: 300; line-height: 1.8; margin-bottom: 3rem; }
+
+/* STATS */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-bottom: 5rem; }
+.stat-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 2rem 1.5rem; text-align: center; }
+.stat-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--coral); margin-bottom: 0.5rem; }
+.stat-label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.5; }
+
+/* WHAT WE BUILT */
+.built-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 5rem; }
+.built-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 2rem; }
+.built-card-icon { font-size: 1.5rem; margin-bottom: 1rem; }
+.built-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.75rem; color: var(--cream); }
+.built-card p { font-size: 0.85rem; opacity: 0.6; line-height: 1.8; font-weight: 300; }
+
+/* TOOLS */
+.tools-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 5rem; }
+.tool-pill { background: rgba(44,204,211,0.1); border: 1px solid rgba(44,204,211,0.3); color: var(--turquoise); padding: 0.5rem 1.25rem; border-radius: 999px; font-size: 0.75rem; letter-spacing: 1px; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 2rem; margin-bottom: 5rem; }
+.timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: rgba(255,255,255,0.1); }
+.timeline-item { position: relative; margin-bottom: 2.5rem; }
+.timeline-item::before { content: ''; position: absolute; left: -2.35rem; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--coral); }
+.timeline-date { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--turquoise); margin-bottom: 0.4rem; }
+.timeline-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; margin-bottom: 0.4rem; }
+.timeline-desc { font-size: 0.85rem; opacity: 0.55; line-height: 1.7; font-weight: 300; }
+
+/* REVENUE */
+.revenue-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 5rem; }
+.revenue-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 1.5rem; }
+.revenue-card h4 { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--turquoise); margin-bottom: 0.75rem; }
+.revenue-card p { font-size: 0.9rem; opacity: 0.7; line-height: 1.7; font-weight: 300; }
+
+footer { background: var(--navy); padding: 3rem 2.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.08); }
+footer p { font-size: 0.8rem; opacity: 0.4; }
+footer a { color: var(--turquoise); text-decoration: none; }
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  .section { padding: 3rem 1.5rem; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Project Showcase</p>
+  <h1>Pickleball Florida USA<br><em>Built with AI</em></h1>
+  <p class="tagline">A fully automated pickleball media, affiliate, and e-commerce platform built from scratch using Claude, ChatGPT, Midjourney, and modern web tools — with zero prior development experience.</p>
+  <a href="https://pickleballfloridausa.com" target="_blank" class="visit-btn">Visit the Live Site</a>
+</header>
+
+<div class="section">
+
+  <p class="section-label">By the Numbers</p>
+  <h2 class="section-title">What Got Built</h2>
+  <p class="section-sub">A full-stack media platform built entirely through AI-assisted development.</p>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-number">7</div>
+      <div class="stat-label">Live Web Pages</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Original Blog Personas</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">20+</div>
+      <div class="stat-label">Original Blog Posts</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Revenue Channels</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3</div>
+      <div class="stat-label">API Integrations</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Email Lists Live</div>
+    </div>
+  </div>
+
+  <p class="section-label">What We Built</p>
+  <h2 class="section-title">Platform Features</h2>
+  <p class="section-sub">Every feature was designed, written, and deployed using AI tools.</p>
+
+  <div class="built-grid">
+    <div class="built-card">
+      <div class="built-card-icon">🌐</div>
+      <h3>Full Website</h3>
+      <p>7-page HTML/CSS/JS website deployed on GitHub Pages via Netlify. Fully responsive across desktop, tablet, and mobile with hamburger navigation on all pages.</p>
+    </div>
+    <div class="built-card">
+      <div class="built-card-icon">📖</div>
+      <h3>The Dink Diaries Blog</h3>
+      <p>Original lifestyle blog featuring four AI-written personas from Palm Beach, Naples, The Villages, and Sarasota. Full archive system with side-panel expand on desktop and bottom sheet on mobile.</p>
+    </div>
+    <div class="built-card">
+      <div class="built-card-icon">🛍️</div>
+      <h3>Etsy Storefront</h3>
+      <p>Integrated Etsy shop with Florida-themed pickleball merchandise. Products embedded directly in the site with live links to purchase.</p>
+    </div>
+    <div class="built-card">
+      <div class="built-card-icon">📧</div>
+      <h3>Email Marketing</h3>
+      <p>Two Brevo email lists — Florida Court Guide subscribers and Dink Diaries subscribers — with automated welcome sequences and weekly newsletter infrastructure.</p>
+    </div>
+    <div class="built-card">
+      <div class="built-card-icon">🎨</div>
+      <h3>AI-Generated Branding</h3>
+      <p>Logo and banner for The Dink Diaries created in Midjourney and refined in Canva. Brand color system, typography, and visual identity defined and applied consistently across all pages.</p>
+    </div>
+    <div class="built-card">
+      <div class="built-card-icon">💰</div>
+      <h3>Affiliate Integration</h3>
+      <p>Amazon affiliate links woven naturally into gear content. Product catalog structured across beginner, intermediate, and advanced categories with seasonal promotional calendar.</p>
+    </div>
+    <div class="built-card">
+      <div class="built-card-icon">📍</div>
+      <h3>Court Discovery</h3>
+      <p>Florida pickleball court database with Google Maps integration. City-specific pages built for 20+ Florida markets with SEO-optimized location content.</p>
+    </div>
+    <div class="built-card">
+      <div class="built-card-icon">🏆</div>
+      <h3>Tournament Calendar</h3>
+      <p>Florida tournament discovery page with structured data, registration links, and dynamic content updated regularly from pickleball event sources.</p>
+    </div>
+    <div class="built-card">
+      <div class="built-card-icon">📱</div>
+      <h3>Social Media System</h3>
+      <p>Full social media playbook across Instagram, Facebook, and Pinterest with content calendar, caption formulas, hashtag strategy, and Reel scripts.</p>
+    </div>
+  </div>
+
+  <p class="section-label">Tools Used</p>
+  <h2 class="section-title">The AI Stack</h2>
+  <p class="section-sub">Built entirely with modern AI tools — no traditional development background required.</p>
+
+  <div class="tools-grid">
+    <span class="tool-pill">Claude (Anthropic)</span>
+    <span class="tool-pill">ChatGPT (OpenAI)</span>
+    <span class="tool-pill">Midjourney</span>
+    <span class="tool-pill">Canva</span>
+    <span class="tool-pill">GitHub</span>
+    <span class="tool-pill">Git / Terminal</span>
+    <span class="tool-pill">Netlify</span>
+    <span class="tool-pill">Brevo (Email)</span>
+    <span class="tool-pill">Google Analytics 4</span>
+    <span class="tool-pill">Google Search Console</span>
+    <span class="tool-pill">Amazon Associates</span>
+    <span class="tool-pill">Etsy</span>
+    <span class="tool-pill">Google Places API</span>
+    <span class="tool-pill">HTML / CSS / JavaScript</span>
+    <span class="tool-pill">PowerShell</span>
+  </div>
+
+  <p class="section-label">How It Was Built</p>
+  <h2 class="section-title">Project Timeline</h2>
+  <p class="section-sub">From zero to live platform using AI as the development team.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">Phase 1</div>
+      <div class="timeline-title">Strategy and Architecture</div>
+      <div class="timeline-desc">Built a complete AI operating system using 13 project knowledge files covering brand guidelines, content strategy, SEO architecture, automation workflows, ideal customer profiles, and revenue models. Claude was configured to act as CMO, SEO strategist, content director, and automation architect simultaneously.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Phase 2</div>
+      <div class="timeline-title">Website Development</div>
+      <div class="timeline-desc">Built 7 pages of HTML, CSS, and JavaScript from scratch using Claude. Deployed via GitHub to Netlify with custom domain. No prior coding experience — every line of code was AI-generated, reviewed, and deployed through the terminal.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Phase 3</div>
+      <div class="timeline-title">Content Creation</div>
+      <div class="timeline-desc">Developed four distinct fictional personas for The Dink Diaries blog — each with full character bibles, voice guides, relationship maps, and local Florida references. 20+ original blog posts written in each character's authentic voice.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Phase 4</div>
+      <div class="timeline-title">Branding and Design</div>
+      <div class="timeline-desc">Generated The Dink Diaries logo and banner using Midjourney with custom brand prompts. Refined in Canva and deployed as a full-width masthead. Complete color system, typography, and visual identity applied consistently across all pages.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Phase 5</div>
+      <div class="timeline-title">Monetization and Email</div>
+      <div class="timeline-desc">Integrated Amazon affiliate program, Etsy storefront, and two Brevo email lists. Built automated email capture forms connected to segmented subscriber lists. Newsletter infrastructure ready for weekly Dink Diaries sends.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Phase 6</div>
+      <div class="timeline-title">Mobile Optimization</div>
+      <div class="timeline-desc">Added responsive hamburger navigation to all 7 pages with portrait and landscape iPhone support. Built a mobile bottom sheet archive system and desktop side-panel archive for the blog — all through AI-generated code deployed via terminal.</div>
+    </div>
+  </div>
+
+  <p class="section-label">Business Model</p>
+  <h2 class="section-title">Revenue Channels</h2>
+  <p class="section-sub">Multiple income streams built into the platform from day one.</p>
+
+  <div class="revenue-grid">
+    <div class="revenue-card">
+      <h4>Amazon Affiliate</h4>
+      <p>Gear reviews, paddle roundups, and buying guides driving affiliate commissions on paddles, shoes, bags, and accessories.</p>
+    </div>
+    <div class="revenue-card">
+      <h4>Etsy Products</h4>
+      <p>Florida-themed pickleball merchandise including apparel, accessories, and lifestyle products sold through integrated Etsy storefront.</p>
+    </div>
+    <div class="revenue-card">
+      <h4>Sponsored Content</h4>
+      <p>Paddle brands, resorts, and local businesses featured through sponsored articles, newsletter placements, and social campaigns.</p>
+    </div>
+    <div class="revenue-card">
+      <h4>Local Partnerships</h4>
+      <p>Florida courts, restaurants, retirement communities, and resorts paying for featured placement in front of the pickleball audience.</p>
+    </div>
+    <div class="revenue-card">
+      <h4>Newsletter Sponsorships</h4>
+      <p>Weekly Dink Diaries newsletter with sponsored sections delivered to a segmented Florida pickleball subscriber list.</p>
+    </div>
+    <div class="revenue-card">
+      <h4>Digital Products</h4>
+      <p>Florida Pickleball Court Guide PDF, tournament calendar, and gear buying guides as low-ticket digital products.</p>
+    </div>
+  </div>
+
+  <p class="section-label">The Big Lesson</p>
+  <h2 class="section-title">What This Project Proves</h2>
+  <p class="section-sub" style="max-width:700px;">You do not need to be a developer to build a real, monetized, professional web platform in 2025. You need curiosity, a clear vision, and the right AI tools. Every line of code on PickleballFloridaUSA.com was generated by AI and deployed through a terminal. Every piece of content was shaped by AI working within a carefully designed brand system. The future of entrepreneurship is human vision plus AI execution.</p>
+
+</div>
+
+<footer>
+  <p>Built by a non-developer using AI &mdash; <a href="https://pickleballfloridausa.com" target="_blank">PickleballFloridaUSA.com</a> &mdash; 2026</p>
+</footer>
+
+</body>
+</html>

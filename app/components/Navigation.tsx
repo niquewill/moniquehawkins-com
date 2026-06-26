@@ -65,7 +65,7 @@ export default function Navigation() {
         gap: '32px',
         listStyle: 'none',
       }}>
-        {['About', 'Work', 'Insights', 'Consulting'].map((item) => (
+    {['About', 'Methodology', 'Work', 'Insights', 'Consulting'].map((item) => (
           <li key={item}>
             <Link
               href={`/${item.toLowerCase()}`}
