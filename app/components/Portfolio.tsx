@@ -1,4 +1,10 @@
+'use client'
+
+import { useState } from 'react'
+
 export default function Portfolio() {
+  const [hovered, setHovered] = useState(false)
+
   return (
     <section style={{
       padding: '120px 48px',
@@ -36,16 +42,25 @@ export default function Portfolio() {
         </div>
       </div>
 
-      <div style={{
-        maxWidth: '1100px',
-        margin: '0 auto',
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
-        gap: '48px',
-        alignItems: 'center',
-        background: '#141414',
-        padding: '48px',
-      }}>
+      <div
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '48px',
+          alignItems: 'center',
+          background: '#141414',
+          padding: '48px',
+          border: '1px solid transparent',
+          borderColor: hovered ? 'rgba(245,241,232,0.3)' : 'transparent',
+          boxShadow: hovered ? '0 0 40px rgba(245,241,232,0.08)' : 'none',
+          transform: hovered ? 'scale(1.02)' : 'scale(1)',
+          transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+        }}
+      >
 
         <div style={{
           width: '100%',
@@ -70,11 +85,13 @@ export default function Portfolio() {
             fontSize: '10px',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
-            opacity: 0.5,
+            opacity: hovered ? 0.9 : 0.5,
             marginBottom: '20px',
             padding: '4px 10px',
             border: '1px solid #2A2A2A',
             display: 'inline-block',
+            textShadow: hovered ? '0 0 15px rgba(245,241,232,0.4)' : 'none',
+            transition: 'all 0.25s',
           }}>
             Personal Project
           </p>
@@ -86,6 +103,8 @@ export default function Portfolio() {
             letterSpacing: '-0.01em',
             lineHeight: 1.1,
             marginBottom: '20px',
+            textShadow: hovered ? '0 0 20px rgba(245,241,232,0.35)' : 'none',
+            transition: 'all 0.25s',
           }}>
             PickleballFloridaUSA.com
           </h3>
@@ -114,8 +133,7 @@ export default function Portfolio() {
             Claude AI · Cloudflare · Google Maps API · Midjourney · DALL-E · Meta Suite
           </p>
 
-          
-            <a href="https://pickleballfloridausa.com"
+          <a href="https://pickleballfloridausa.com"
             target="_blank"
             rel="noopener noreferrer"
             className="btn-glow"
