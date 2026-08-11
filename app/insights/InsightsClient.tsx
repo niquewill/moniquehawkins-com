@@ -60,19 +60,26 @@ export default function InsightsPage() {
         {categories.map((cat, i) => {
           const isActive = cat === selectedCategory
           return (
-          <button key={i} onClick={() => setSelectedCategory(cat)} style={{
-            fontFamily: '"IBM Plex Mono", monospace',
-            fontSize: '11px',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            color: isActive ? 'var(--color-ink)' : '#F5F1E8',
-            background: isActive ? '#F5F1E8' : 'transparent',
-            border: '1px solid rgba(245,241,232,0.2)',
-            padding: '8px 16px',
-            cursor: 'pointer',
-            transition: 'all 0.2s',
-            opacity: isActive ? 1 : 0.6,
-          }}>
+          <button
+            key={i}
+            onClick={() => {
+              setSelectedCategory(cat)
+              document.getElementById('insights-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }}
+            style={{
+              fontFamily: '"IBM Plex Mono", monospace',
+              fontSize: '11px',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+              color: isActive ? 'var(--color-ink)' : '#F5F1E8',
+              background: isActive ? '#F5F1E8' : 'transparent',
+              border: '1px solid rgba(245,241,232,0.2)',
+              padding: '8px 16px',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              opacity: isActive ? 1 : 0.6,
+            }}
+          >
             {cat}
           </button>
         )})}
@@ -252,7 +259,7 @@ export default function InsightsPage() {
       </section>
 
       {/* ── Article Grid ─────────────────────────────────────────── */}
-      <section style={{
+      <section id="insights-grid" style={{
         padding: '80px clamp(24px, 6vw, 120px)',
         maxWidth: '1200px',
         margin: '0 auto',
