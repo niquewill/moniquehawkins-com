@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 export default function InsightsPage() {
   const [hoveredHeroTag, setHoveredHeroTag] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('All')
   const [hoveredCardTag, setHoveredCardTag] = useState<number | null>(null)
   return (
     <main style={{ background: 'var(--color-ink)', paddingTop: '120px' }}>
@@ -56,23 +57,25 @@ export default function InsightsPage() {
         gap: '8px',
         flexWrap: 'wrap',
       }}>
-        {categories.map((cat, i) => (
-          <button key={i} style={{
+        {categories.map((cat, i) => {
+          const isActive = cat === selectedCategory
+          return (
+          <button key={i} onClick={() => setSelectedCategory(cat)} style={{
             fontFamily: '"IBM Plex Mono", monospace',
             fontSize: '11px',
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            color: i === 0 ? 'var(--color-ink)' : '#F5F1E8',
-            background: i === 0 ? '#F5F1E8' : 'transparent',
+            color: isActive ? 'var(--color-ink)' : '#F5F1E8',
+            background: isActive ? '#F5F1E8' : 'transparent',
             border: '1px solid rgba(245,241,232,0.2)',
             padding: '8px 16px',
             cursor: 'pointer',
             transition: 'all 0.2s',
-            opacity: i === 0 ? 1 : 0.6,
+            opacity: isActive ? 1 : 0.6,
           }}>
             {cat}
           </button>
-        ))}
+        )})}
       </section>
 
       {/* ── Featured Article ──────────────────────────────────────── */}
@@ -225,7 +228,7 @@ export default function InsightsPage() {
                 This article is in progress. Subscribe to be notified when it publishes.
               </p>
               <a
-                href="mailto:MH@moniquehawkins.com?subject=Notify me when Insights launches"
+                href="#newsletter"
                 style={{
                   fontFamily: '"IBM Plex Mono", monospace',
                   fontSize: '11px',
@@ -266,7 +269,7 @@ export default function InsightsPage() {
           gap: '2px',
           background: 'rgba(245,241,232,0.08)',
         }}>
-          {articles.map((article, i) => (
+          {(selectedCategory === 'All' ? articles : articles.filter(a => a.category === selectedCategory)).map((article, i) => (
             <div key={i} style={{
               background: 'var(--color-ink)',
               padding: '36px 32px',
@@ -366,7 +369,7 @@ export default function InsightsPage() {
       </section>
 
       {/* ── Newsletter CTA ───────────────────────────────────────── */}
-      <section style={{
+      <section id="newsletter" style={{
         padding: '100px clamp(24px, 6vw, 120px)',
         maxWidth: '1200px',
         margin: '0 auto',
@@ -415,7 +418,7 @@ export default function InsightsPage() {
             Get Notified When Insights Launches
           </p>
           <a
-           href="https://c8fbe7fc.sibforms.com/serve/MUIFAD42C4KLhaPMhHPhsasVpEtNCYCse8IcBfzMS6_mP-DsZOgaTeKhYHk_LSpAwig2O3T4aqp_QKIP2ul6l8XmQu4HfMvp3-Yq1FBPWWDzK86gejAtCixOFd4mj_-u6h3ZvFPtzR_cJUGHWhQJeR62iLbrcJWE19qsfR8RN87eS7ya5gWVO364Y83hGkXgxz_SogSWnHuyr1d_LA=="
+           target="_blank" rel="noopener noreferrer" href="https://c8fbe7fc.sibforms.com/serve/MUIFAD42C4KLhaPMhHPhsasVpEtNCYCse8IcBfzMS6_mP-DsZOgaTeKhYHk_LSpAwig2O3T4aqp_QKIP2ul6l8XmQu4HfMvp3-Yq1FBPWWDzK86gejAtCixOFd4mj_-u6h3ZvFPtzR_cJUGHWhQJeR62iLbrcJWE19qsfR8RN87eS7ya5gWVO364Y83hGkXgxz_SogSWnHuyr1d_LA=="
             style={{
               display: 'inline-flex',
               alignItems: 'center',

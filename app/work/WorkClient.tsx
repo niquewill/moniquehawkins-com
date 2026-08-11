@@ -187,6 +187,8 @@ export default function WorkPage() {
               </a>
               <a
                 href="/pickleball-project-showcase_1.html"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={ghostBtnStyle}
                 onMouseEnter={e => {
                   e.currentTarget.style.background = 'rgba(245,241,232,0.06)'

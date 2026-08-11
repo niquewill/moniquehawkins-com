@@ -1,5 +1,7 @@
 'use client'
 
+import QuickContactForm from '../components/QuickContactForm'
+
 import { useState, useEffect } from 'react'
 
 export default function ConsultingPage() {
@@ -130,7 +132,7 @@ export default function ConsultingPage() {
           No commitment, no sales process — just a straight answer.
         </p>
         <a
-          href="mailto:MH@moniquehawkins.com?subject=Quick question"
+          href="#consulting-contact"
           style={{
             fontFamily: '"IBM Plex Mono", monospace',
             fontSize: '12px',
@@ -162,6 +164,8 @@ export default function ConsultingPage() {
           MH@moniquehawkins.com · Response within 48 hours
         </p>
       </section>
+
+      <QuickContactForm />
 
     </main>
   )

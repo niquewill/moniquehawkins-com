@@ -84,3 +84,7 @@ body {
   color: #E8E4DC;
   text-shadow: 0 0 20px rgba(232,228,220,0.6);
 }
+/* Smooth in-page scrolling for anchor jumps (Ask a Question, Notify Me) */
+html { scroll-behavior: smooth; }
+/* Keep the fixed nav from covering scrolled-to sections */
+[id] { scroll-margin-top: 96px; }
