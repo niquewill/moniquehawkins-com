@@ -1,5 +1,7 @@
 'use client'
 
+import NewsletterForm from '../components/NewsletterForm'
+
 import { useState } from 'react'
 
 export default function InsightsPage() {
@@ -407,54 +409,7 @@ export default function InsightsPage() {
           </p>
         </div>
 
-        <div style={{
-          border: '1px solid rgba(245,241,232,0.2)',
-          padding: '40px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '20px',
-        }}>
-          <p style={{
-            fontFamily: '"IBM Plex Mono", monospace',
-            fontSize: '12px',
-            letterSpacing: '0.15em',
-            textTransform: 'uppercase',
-            color: '#F5F1E8',
-            opacity: 0.6,
-          }}>
-            Get Notified When Insights Launches
-          </p>
-          <a
-           target="_blank" rel="noopener noreferrer" href="https://c8fbe7fc.sibforms.com/serve/MUIFAD42C4KLhaPMhHPhsasVpEtNCYCse8IcBfzMS6_mP-DsZOgaTeKhYHk_LSpAwig2O3T4aqp_QKIP2ul6l8XmQu4HfMvp3-Yq1FBPWWDzK86gejAtCixOFd4mj_-u6h3ZvFPtzR_cJUGHWhQJeR62iLbrcJWE19qsfR8RN87eS7ya5gWVO364Y83hGkXgxz_SogSWnHuyr1d_LA=="
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px',
-              fontFamily: '"IBM Plex Mono", monospace',
-              fontSize: '12px',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: 'var(--color-ink)',
-              background: '#F5F1E8',
-              textDecoration: 'none',
-              padding: '16px 28px',
-              transition: 'all 0.2s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#FFFFFF' }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#F5F1E8' }}
-          >
-            Subscribe to The Workflow →
-          </a>
-          <p style={{
-            fontFamily: '"IBM Plex Mono", monospace',
-            fontSize: '11px',
-            opacity: 0.3,
-            textAlign: 'center',
-          }}>
-            No spam. Unsubscribe anytime.
-          </p>
-        </div>
+        <NewsletterForm />
       </section>
 
     </main>
