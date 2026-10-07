@@ -120,6 +120,9 @@ export default function WebDesignPage() {
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
 
+          /* Hide the global MoniqueHawkins.com nav on this page */
+          body > nav, #__next > nav, nav[style*="position: fixed"] { display: none !important; }
+
           .mhd-body * { box-sizing: border-box; margin: 0; }
           .mhd-body html { scroll-behavior: smooth; }
           .mhd-body a { color: inherit; }
