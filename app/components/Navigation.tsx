@@ -65,16 +65,25 @@ export default function Navigation() {
         display: 'flex',
         gap: '32px',
         listStyle: 'none',
+        margin: 0,
+        padding: 0,
       }}>
-    {['About', 'Methodology', 'Work', 'Insights', 'Consulting'].map((item) => (
-          <li key={item}>
+        {[
+          { label: 'About',      href: '/about'       },
+          { label: 'Methodology', href: '/methodology' },
+          { label: 'Work',       href: '/work'        },
+          { label: 'Insights',   href: '/insights'    },
+          { label: 'Consulting', href: '/consulting'  },
+          { label: 'Web Design', href: '/web-design'  },
+        ].map(({ label, href }) => (
+          <li key={label}>
             <Link
-              href={`/${item.toLowerCase()}`}
-              style={navLinkStyle(item)}
-              onMouseEnter={() => setHoveredLink(item)}
+              href={href}
+              style={navLinkStyle(label)}
+              onMouseEnter={() => setHoveredLink(label)}
               onMouseLeave={() => setHoveredLink(null)}
             >
-              {item}
+              {label}
             </Link>
           </li>
         ))}
