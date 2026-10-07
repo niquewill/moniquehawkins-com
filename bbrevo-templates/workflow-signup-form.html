@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Workflow — Subscribe</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0A0A0A;
+    color: #FAFAFA;
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  /* Top rule */
+  .top-rule {
+    height: 2px;
+    background: rgba(245,241,232,0.4);
+    margin-bottom: 0;
+  }
+
+  /* Card */
+  .card {
+    border: 1px solid rgba(245,241,232,0.15);
+    border-top: none;
+    padding: 48px 48px 40px;
+    background: #0A0A0A;
+  }
+
+  /* Header */
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #F5F1E8;
+    opacity: 0.4;
+    margin-bottom: 12px;
+  }
+
+  .title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(28px, 5vw, 40px);
+    line-height: 1.1;
+    font-weight: 400;
+    color: #F5F1E8;
+    margin-bottom: 24px;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: rgba(245,241,232,0.12);
+    margin-bottom: 28px;
+  }
+
+  /* Description */
+  .description {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.85;
+    color: #F5F1E8;
+    opacity: 0.55;
+    margin-bottom: 32px;
+  }
+
+  /* What you get list */
+  .expect-list {
+    margin-bottom: 36px;
+  }
+
+  .expect-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    border-top: 1px solid rgba(245,241,232,0.08);
+    padding: 12px 0;
+  }
+
+  .expect-item:last-child {
+    border-bottom: 1px solid rgba(245,241,232,0.08);
+  }
+
+  .expect-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: #F5F1E8;
+    opacity: 0.3;
+    padding-top: 2px;
+    min-width: 20px;
+  }
+
+  .expect-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #F5F1E8;
+    opacity: 0.6;
+  }
+
+  .expect-text strong {
+    color: #F5F1E8;
+    opacity: 1;
+    font-weight: 500;
+  }
+
+  /* Form */
+  .form-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #F5F1E8;
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+  }
+
+  .email-input {
+    flex: 1;
+    background: #141414;
+    border: 1px solid rgba(245,241,232,0.2);
+    border-right: none;
+    color: #F5F1E8;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    padding: 14px 18px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .email-input::placeholder {
+    color: #F5F1E8;
+    opacity: 0.2;
+  }
+
+  .email-input:focus {
+    border-color: rgba(245,241,232,0.45);
+  }
+
+  .submit-btn {
+    background: #F5F1E8;
+    color: #0A0A0A;
+    border: none;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .submit-btn:hover {
+    background: #FFFFFF;
+  }
+
+  .fine-print {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: #F5F1E8;
+    opacity: 0.25;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* Bottom */
+  .bottom-rule {
+    height: 1px;
+    background: rgba(245,241,232,0.08);
+  }
+
+  .footer {
+    padding: 20px 48px;
+    border: 1px solid rgba(245,241,232,0.08);
+    border-top: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #F5F1E8;
+    opacity: 0.25;
+  }
+
+  .footer-site {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: #F5F1E8;
+    opacity: 0.2;
+    text-decoration: none;
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 36px 28px 32px; }
+    .footer { padding: 16px 28px; }
+    .form-row { flex-direction: column; gap: 8px; }
+    .email-input { border-right: 1px solid rgba(245,241,232,0.2); }
+    .submit-btn { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="top-rule"></div>
+
+    <div class="card">
+
+      <p class="eyebrow">Monique Hawkins</p>
+      <h1 class="title">The Workflow</h1>
+
+      <div class="divider"></div>
+
+      <p class="description">
+        Practical thinking on AI adoption, technology training, and workflow
+        transformation — for professionals who are actually doing the work.
+        Bi-weekly. No hype. No filler.
+      </p>
+
+      <div class="expect-list">
+        <div class="expect-item">
+          <span class="expect-num">01</span>
+          <span class="expect-text"><strong>One insight</strong> — a field observation or framework worth thinking about</span>
+        </div>
+        <div class="expect-item">
+          <span class="expect-num">02</span>
+          <span class="expect-text"><strong>One workflow tip</strong> — something practical to apply this week</span>
+        </div>
+        <div class="expect-item">
+          <span class="expect-num">03</span>
+          <span class="expect-text"><strong>One thing worth reading</strong> — a resource or tool from the field</span>
+        </div>
+        <div class="expect-item">
+          <span class="expect-num">04</span>
+          <span class="expect-text"><strong>One question to sit with</strong> — to bring back to your team</span>
+        </div>
+      </div>
+
+      <!-- Brevo form fields go here -->
+      <label class="form-label" for="EMAIL">Your email address</label>
+      <div class="form-row">
+        <input
+          class="email-input"
+          type="email"
+          id="EMAIL"
+          name="EMAIL"
+          placeholder="you@organization.com"
+          required
+        />
+        <button type="submit" class="submit-btn">
+          Subscribe →
+        </button>
+      </div>
+
+      <p class="fine-print">No spam. Unsubscribe anytime. I read every reply.</p>
+
+    </div>
+
+    <div class="bottom-rule"></div>
+
+    <div class="footer">
+      <span class="footer-name">Monique Hawkins</span>
+      <a href="https://moniquehawkins.com" class="footer-site">moniquehawkins.com</a>
+    </div>
+
+  </div>
+</body>
+</html>

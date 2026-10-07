@@ -1,117 +1,120 @@
+'use client'
+
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
-export default function Footer() {
+export default function Navigation() {
+  const [scrolled, setScrolled] = useState(false)
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null)
+  const [hoveredCta, setHoveredCta] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const navLinkStyle = (name: string) => ({
+    fontFamily: '"IBM Plex Mono", "Courier New", monospace',
+    fontSize: '13px',
+    fontWeight: 500,
+    letterSpacing: '0.06em',
+    textTransform: 'uppercase' as const,
+    color: '#F5F1E8',
+    textDecoration: 'none',
+    opacity: 1,
+    transition: 'all 0.2s',
+    textShadow: hoveredLink === name
+      ? '0 0 20px rgba(232,228,220,0.6), 0 0 40px rgba(232,228,220,0.3)'
+      : '0 0 15px rgba(245,241,232,0.3)',
+  })
+
   return (
-    <footer style={{
-      padding: '64px 48px 40px',
-      background: 'var(--color-ink)',
+    <nav style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 100,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '20px 48px',
+      background: scrolled ? 'rgba(10,10,10,0.95)' : 'transparent',
+      borderBottom: scrolled ? '1px solid #2A2A2A' : '1px solid transparent',
+      backdropFilter: scrolled ? 'blur(12px)' : 'none',
+      transition: 'all 0.4s ease',
     }}>
-      <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1.5fr 1fr 1fr',
-          gap: '48px',
-          marginBottom: '64px',
-        }}>
+      {/* Wordmark */}
+      <Link href="/" style={{
+        fontFamily: '"IBM Plex Mono", "Courier New", monospace',
+        fontSize: '13px',
+        fontWeight: 500,
+        letterSpacing: '0.06em',
+        textTransform: 'uppercase',
+        color: '#FAFAFA',
+        textDecoration: 'none',
+        opacity: 0.9,
+      }}>
+        Monique Hawkins
+      </Link>
 
-          {/* Brand */}
-          <div>
-            <p style={{
-              fontFamily: 'Arial Black, sans-serif',
-              fontSize: '16px',
-              textTransform: 'uppercase',
-              letterSpacing: '-0.01em',
-              marginBottom: '12px',
-            }}>
-              Monique Hawkins
-            </p>
-            <p style={{
-              fontFamily: '"IBM Plex Mono", monospace',
-              fontSize: '12px',
-              lineHeight: 1.8,
-              opacity: 0.4,
-              maxWidth: '220px',
-            }}>
-              Technology Instructor. Microsoft 365 & Copilot. Legal Technology.
-            </p>
-          </div>
+      {/* Nav Links */}
+      <ul style={{
+        display: 'flex',
+        gap: '32px',
+        listStyle: 'none',
+        margin: 0,
+        padding: 0,
+      }}>
+        {[
+          { label: 'About',      href: '/about'       },
+          { label: 'Methodology', href: '/methodology' },
+          { label: 'Work',       href: '/work'        },
+          { label: 'Insights',   href: '/insights'    },
+          { label: 'Consulting', href: '/consulting'  },
+          { label: 'Web Design', href: '/web-design'  },
+        ].map(({ label, href }) => (
+          <li key={label}>
+            <Link
+              href={href}
+              style={navLinkStyle(label)}
+              onMouseEnter={() => setHoveredLink(label)}
+              onMouseLeave={() => setHoveredLink(null)}
+            >
+              {label}
+            </Link>
+          </li>
+        ))}
+      </ul>
 
-          {/* Navigate */}
-          <div>
-            <p style={{
-              fontFamily: '"IBM Plex Mono", monospace',
-              fontSize: '10px',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              opacity: 0.3,
-              marginBottom: '16px',
-            }}>
-              Navigate
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {['About', 'Work', 'Insights', 'Consulting'].map((item) => (
-                <Link
-                  key={item}
-                  href={`/${item.toLowerCase()}`}
-                  style={{
-                    fontFamily: '"IBM Plex Mono", monospace',
-                    fontSize: '12px',
-                    color: '#FAFAFA',
-                    textDecoration: 'none',
-                    opacity: 0.45,
-                  }}
-                >
-                  {item}
-                </Link>
-              ))}
-            </div>
-          </div>
+      {/* CTA Button */}
+      <Link
+        href="/contact"
+        style={{
+          fontFamily: '"IBM Plex Mono", "Courier New", monospace',
+          fontSize: '12px',
+          fontWeight: 500,
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase',
+          color: '#F5F1E8',
+          textDecoration: 'none',
+          padding: '9px 18px',
+          border: hoveredCta
+            ? '1px solid #F5F1E8'
+            : '1px solid rgba(245,241,232,0.4)',
+          transition: 'all 0.2s',
+          textShadow: hoveredCta
+            ? '0 0 20px rgba(232,228,220,0.6)'
+            : '0 0 15px rgba(245,241,232,0.3)',
+        }}
+        onMouseEnter={() => setHoveredCta(true)}
+        onMouseLeave={() => setHoveredCta(false)}
+      >
+        Contact →
+      </Link>
 
-          {/* Connect */}
-          <div>
-            <p style={{
-              fontFamily: '"IBM Plex Mono", monospace',
-              fontSize: '10px',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              opacity: 0.3,
-              marginBottom: '16px',
-            }}>
-              Connect
-            </p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <Link href="/contact" style={{
-                fontFamily: '"IBM Plex Mono", monospace',
-                fontSize: '12px',
-                color: '#FAFAFA',
-                textDecoration: 'none',
-                opacity: 0.45,
-              }}>
-                Contact
-              </Link>
-            </div>
-          </div>
-
-        </div>
-
-        <div style={{
-          borderTop: '1px solid #2A2A2A',
-          paddingTop: '20px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-          <span style={{
-            fontFamily: '"IBM Plex Mono", monospace',
-            fontSize: '10px',
-            opacity: 0.25,
-          }}>
-            © 2026 Monique Hawkins. All rights reserved.
-          </span>
-        </div>
-
-      </div>
-    </footer>
+    </nav>
   )
 }
