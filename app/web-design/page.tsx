@@ -147,6 +147,11 @@ export default function WebDesignPage() {
           .mhd-h3 { font-family: 'Bricolage Grotesque', system-ui, sans-serif; color: #0F3A3D; font-size: 23px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
           .mhd-lede { font-size: 21px; color: #536866; }
 
+          /* Back to main site */
+          .mhd-backbar { background: #0A0A0A; }
+          .mhd-backbar a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 0; color: #F5F1E8; text-decoration: none; font: 500 13px/1 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+          .mhd-backbar a:hover { text-decoration: underline; text-underline-offset: 4px; }
+
           /* Header */
           .mhd-header { padding: 22px 0; }
           .mhd-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
@@ -259,10 +264,30 @@ export default function WebDesignPage() {
           @media (max-width: 560px) {
             .mhd-steps { grid-template-columns: 1fr; }
           }
+          /* Phones: comparison table becomes stacked cards, so nothing scrolls sideways */
+          @media (max-width: 640px) {
+            .mhd-compare-wrap { overflow-x: visible; }
+            .mhd-table { min-width: 0; }
+            .mhd-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+            .mhd-table, .mhd-table tbody, .mhd-table tr, .mhd-table th, .mhd-table td { display: block; width: 100%; }
+            .mhd-table tbody tr { margin-bottom: 18px; border: 1px solid #CFDCDA; border-radius: 12px; overflow: hidden; background: #fff; }
+            .mhd-table tbody th { width: 100%; background: #0F3A3D; color: #fff; padding: 12px 16px; border-bottom: 0; }
+            .mhd-table tbody td { padding: 10px 16px; font-size: 17px; }
+            .mhd-table tbody td::before { content: attr(data-label); display: block; font: 600 13px/1.3 'Bricolage Grotesque', system-ui, sans-serif; color: #536866; margin-bottom: 2px; }
+            .mhd-table tbody td:last-child { border-bottom: 0; }
+            .mhd-table tbody td:last-child::before { color: #0F3A3D; }
+          }
         `}</style>
 
         {/* ── MoHawk page wrapper: scoped so it doesn't leak into the rest of the site ── */}
         <div className="mhd-body">
+
+          {/* ── Link back to the main site (the global nav is hidden on this page) ── */}
+          <div className="mhd-backbar">
+            <div className="mhd-wrap">
+              <a href="/">← Back to Monique Hawkins</a>
+            </div>
+          </div>
 
           {/* ── Header ── */}
           <header className="mhd-header">
@@ -403,11 +428,11 @@ export default function WebDesignPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><th scope="row">Time to launch</th><td>Often several months</td><td>Depends on your volunteers</td><td>Usually a few weeks</td></tr>
-                      <tr><th scope="row">Design</th><td>Custom</td><td>Template</td><td>Custom, built around your church</td></tr>
-                      <tr><th scope="row">Making changes</th><td>Billed per request</td><td>You do it all</td><td>You're trained, with help when you need it</td></tr>
-                      <tr><th scope="row">Monthly cost</th><td>Hosting and maintenance fees</td><td>Subscription plan</td><td>Often free or low-cost hosting</td></tr>
-                      <tr><th scope="row">Who owns it</th><td>Varies by contract</td><td>The platform</td><td>You do</td></tr>
+                      <tr><th scope="row">Time to launch</th><td data-label="Typical web agency">Often several months</td><td data-label="Do-it-yourself builders">Depends on your volunteers</td><td data-label="MoHawk Designs">Usually a few weeks</td></tr>
+                      <tr><th scope="row">Design</th><td data-label="Typical web agency">Custom</td><td data-label="Do-it-yourself builders">Template</td><td data-label="MoHawk Designs">Custom, built around your church</td></tr>
+                      <tr><th scope="row">Making changes</th><td data-label="Typical web agency">Billed per request</td><td data-label="Do-it-yourself builders">You do it all</td><td data-label="MoHawk Designs">You're trained, with help when you need it</td></tr>
+                      <tr><th scope="row">Monthly cost</th><td data-label="Typical web agency">Hosting and maintenance fees</td><td data-label="Do-it-yourself builders">Subscription plan</td><td data-label="MoHawk Designs">Often free or low-cost hosting</td></tr>
+                      <tr><th scope="row">Who owns it</th><td data-label="Typical web agency">Varies by contract</td><td data-label="Do-it-yourself builders">The platform</td><td data-label="MoHawk Designs">You do</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -581,7 +606,7 @@ export default function WebDesignPage() {
             <div className="mhd-wrap mhd-footer-inner">
               <span className="mhd-brand">MoHawk Designs</span>
               <span>Church and small business websites in New Orleans, Louisiana</span>
-              <span>© {new Date().getFullYear()} MoHawk Designs</span>
+              <span>© {new Date().getFullYear()} MoHawk Designs · <a href="/">A Monique Hawkins studio</a></span>
             </div>
           </footer>
 
