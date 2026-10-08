@@ -300,8 +300,9 @@ export default function AboutPage() {
               That means Microsoft 365: Word&apos;s advanced features, styles, document automation,
               track changes, and the features that save legal professionals hours every week. It
               means Copilot for Microsoft 365 and the workflows it enables across the legal
-              environment. It means platforms like Intellek, iManage, Draftable, Kofax Power PDF,
-              Scribe, Litera, BigHand, and Intapp Time.
+              environment. And it means the technology woven into every part of a legal
+              workflow: document management, document comparison, PDF editing, dictation, time
+              entry, and the learning platforms that help people keep up.
             </p>
 
             <p style={pStyle}>

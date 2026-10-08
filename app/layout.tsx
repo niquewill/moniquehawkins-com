@@ -62,8 +62,11 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
-  // Paste your token from Google Search Console (Settings → Ownership verification → HTML tag)
-  verification: { google: 'PASTE_SEARCH_CONSOLE_TOKEN' },
+  // Google Search Console token is read from the Vercel environment variable
+  // NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION. If it isn't set, no tag is output.
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION } }
+    : {}),
 }
 
 const businessSchema = {

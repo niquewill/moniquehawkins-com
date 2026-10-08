@@ -13,7 +13,7 @@ export default function Positioning() {
     {
       num: '03.',
       title: 'LEGAL\nTECHNOLOGY',
-      desc: 'Supporting the platforms that run a law firm — iManage, Draftable, Kofax Power PDF, Intellek, Scribe, Litera, BigHand, and Intapp Time.',
+      desc: 'Supporting the technology woven into everyday legal work — document management, comparison and PDF tools, dictation, time entry, and training platforms.',
     },
   ]
 
