@@ -1,7 +1,6 @@
 'use client'
 
 import CTASection from './components/CTASection'
-import Footer from './components/Footer'
 import Insights from './components/Insights'
 import Positioning from './components/Positioning'
 import AboutSnapshot from './components/AboutSnapshot'
@@ -144,7 +143,6 @@ export default function Home() {
     <Insights />
     <Portfolio />
     <CTASection />
-    <Footer />
     </>
   )
 }

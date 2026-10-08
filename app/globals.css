@@ -88,3 +88,17 @@ body {
 html { scroll-behavior: smooth; }
 /* Keep the fixed nav from covering scrolled-to sections */
 [id] { scroll-margin-top: 96px; }
+
+/* Phones: never let the page slide sideways. Anything decorative that pokes past
+   the screen edge is trimmed instead of widening the page. */
+html, body { overflow-x: clip; max-width: 100%; }
+
+/* Phones: stack side-by-side layouts into one column.
+   Most sections set their columns with inline styles, so this rule targets those. */
+@media (max-width: 760px) {
+  [style*="grid-template-columns"]:not([data-keep-cols]) { grid-template-columns: 1fr !important; }
+  /* Four-across rows (stats, tabs) become two-across */
+  [style*="4, 1fr"][style*="grid-template-columns"]:not([data-keep-cols]) { grid-template-columns: 1fr 1fr !important; }
+  /* Small icon + text rows keep their icon column */
+  [style*="28px 1fr"][style*="grid-template-columns"] { grid-template-columns: 28px 1fr !important; }
+}

@@ -103,8 +103,8 @@ export default function WorkPage() {
                 vision plus AI execution can produce.
               </p>
 
-              {/* Stats row */}
-              <div style={{
+              {/* Stats row (data-keep-cols: these three short numbers fit side by side on phones) */}
+              <div data-keep-cols style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
                 gap: '2px',

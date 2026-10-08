@@ -1,32 +1,35 @@
 // app/web-design/page.tsx
-// MoHawk Designs sales page — ported from index.html
-// Images go in: public/web-design/nmb-desktop.jpg  &  public/web-design/nmb-phone.jpg
+// MoHawk Designs sales page
+// Images live in public/web-design/: mohawk-logo.png, mohawk-mark.png,
+// mh-desktop.jpg, mh-phone.jpg, nmb-desktop.jpg, nmb-phone.jpg
+// Pickleball screenshot lives in public/images/pickleball-florida.png
 
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'MoHawk Designs | Church Website Design in New Orleans & Louisiana',
+  title: 'MoHawk Designs | Custom Websites for Businesses on the Move',
   description:
-    'MoHawk Designs builds modern, mobile-friendly websites for churches and small businesses in New Orleans, Kenner, Metairie and across Louisiana, then teaches your team to update the site yourselves. Start with a free consultation.',
+    'MoHawk Designs builds bold, fast, mobile-first websites with AI, then teaches you to run them yourself. Custom design, launched in weeks, owned by you. Start with a free consultation.',
   keywords:
-    'church website design, church web designer New Orleans, church website Louisiana, affordable church website, website for small church, small business website New Orleans, Kenner web design, Metairie web design, AI website design',
+    'custom website design, small business website, AI website design, website designer, mobile-first website, affordable website design, website for startups, personal brand website, web designer New Orleans',
   alternates: {
     canonical: 'https://moniquehawkins.com/web-design',
   },
   openGraph: {
     type: 'website',
     siteName: 'MoHawk Designs',
-    title: 'MoHawk Designs | Websites for churches and small businesses',
+    title: 'MoHawk Designs | Websites with an edge',
     description:
-      'Modern church and small business websites, built fast with AI and handed over with training so your team can keep them current.',
+      'Bold, fast, mobile-first websites for businesses on the move, built with AI and handed over with training so you can run them yourself.',
     url: 'https://moniquehawkins.com/web-design',
     images: [
       {
-        url: 'https://moniquehawkins.com/web-design/nmb-desktop.jpg',
+        url: 'https://moniquehawkins.com/web-design/mh-desktop.jpg',
         width: 1440,
         height: 900,
-        alt: 'New Mount Bethel Baptist Church website',
+        alt: 'MoniqueHawkins.com, a website designed by MoHawk Designs',
       },
     ],
   },
@@ -40,17 +43,18 @@ const jsonLd = {
   '@type': 'ProfessionalService',
   name: 'MoHawk Designs',
   url: 'https://moniquehawkins.com/web-design',
-  image: 'https://moniquehawkins.com/web-design/nmb-desktop.jpg',
+  image: 'https://moniquehawkins.com/web-design/mh-desktop.jpg',
+  logo: 'https://moniquehawkins.com/web-design/mohawk-logo.png',
   description:
-    'Website design for churches and small businesses in the New Orleans area, built with AI and handed over with hands-on training.',
-  areaServed: ['New Orleans', 'Kenner', 'Metairie', 'Jefferson Parish', 'Louisiana'],
+    'Custom, mobile-first website design for businesses on the move, built with AI and handed over with hands-on training.',
+  areaServed: 'Worldwide',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'New Orleans',
     addressRegion: 'LA',
     addressCountry: 'US',
   },
-  serviceType: ['Church website design', 'Small business website design', 'Website training'],
+  serviceType: ['Custom website design', 'Small business website design', 'Personal brand websites', 'Website training'],
   makesOffer: {
     '@type': 'Offer',
     name: 'Free website consultation',
@@ -96,12 +100,9 @@ const IconCheck = () => (
     <path d="M5 12l5 5L20 7" />
   </svg>
 )
+// Header icon: the mosaic-mohawk profile without lettering (lettering is unreadable this small)
 const LogoMark = () => (
-  <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true">
-    <rect width="64" height="64" rx="14" fill="#0F3A3D" />
-    <path d="M10 40 L32 18 L54 40 L45 40 L32 27 L19 40Z" fill="#F2B33D" />
-    <path d="M22 46 L32 36 L42 46Z" fill="#EEF3F2" />
-  </svg>
+  <Image src="/web-design/mohawk-mark.png" alt="" width={52} height={52} priority />
 )
 
 // ─── Page component ───────────────────────────────────────────────────────────
@@ -163,6 +164,22 @@ export default function WebDesignPage() {
           .mhd-nav .mhd-btn { padding: 12px 20px; font-size: 15px; }
 
           /* Hero */
+          .mhd-hero-logo { display: block; width: 132px; height: auto; margin-bottom: 18px; }
+          .mhd-devices a { display: block; color: inherit; }
+          .mhd-devices a.mhd-device-link:hover .mhd-browser { transform: rotate(-1.5deg) translateY(-4px); }
+          .mhd-browser { transition: transform .25s ease; }
+
+          /* Portfolio cards */
+          .mhd-projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 44px; }
+          .mhd-project { display: flex; flex-direction: column; background: #fff; border: 1px solid #CFDCDA; border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; transition: transform .2s ease, box-shadow .2s ease; }
+          .mhd-project:hover, .mhd-project:focus-visible { transform: translateY(-4px); box-shadow: 0 24px 50px -24px rgba(15,58,61,0.5); }
+          .mhd-project-img { aspect-ratio: 16 / 10; overflow: hidden; background: #E3EBEA; border-bottom: 1px solid #CFDCDA; }
+          .mhd-project-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+          .mhd-project-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+          .mhd-project-tag { font: 600 13px/1.2 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: #B07A12; }
+          .mhd-project-body p { font-size: 17px; color: #536866; }
+          .mhd-project-go { margin-top: auto; padding-top: 6px; font: 700 16px/1 'Bricolage Grotesque', system-ui, sans-serif; color: #0F3A3D; }
+          .mhd-project:hover .mhd-project-go { text-decoration: underline; text-underline-offset: 4px; }
           .mhd-hero { padding: 40px 0 0; overflow: hidden; }
           .mhd-hero-grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: center; }
           .mhd-hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -244,6 +261,7 @@ export default function WebDesignPage() {
           .mhd-footer { background: #0B2A2C; color: #A9C1BE; padding: 44px 0; font-size: 16px; }
           .mhd-footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; }
           .mhd-footer .mhd-brand { color: #fff; font-size: 20px; }
+
           .mhd-footer a { color: #DCE7E5; }
 
           /* Responsive */
@@ -256,6 +274,12 @@ export default function WebDesignPage() {
             .mhd-training-grid { grid-template-columns: 1fr; gap: 36px; }
             .mhd-cta-grid { grid-template-columns: 1fr; }
             .mhd-steps { grid-template-columns: 1fr 1fr; }
+          }
+          @media (max-width: 960px) {
+            .mhd-projects { grid-template-columns: 1fr 1fr; }
+          }
+          @media (max-width: 640px) {
+            .mhd-projects { grid-template-columns: 1fr; }
           }
           @media (max-width: 760px) {
             .mhd-nav a:not(.mhd-btn) { display: none; }
@@ -285,7 +309,7 @@ export default function WebDesignPage() {
           {/* ── Link back to the main site (the global nav is hidden on this page) ── */}
           <div className="mhd-backbar">
             <div className="mhd-wrap">
-              <a href="/">← Back to Monique Hawkins</a>
+              <Link href="/">← Back to Monique Hawkins</Link>
             </div>
           </div>
 
@@ -296,13 +320,13 @@ export default function WebDesignPage() {
                 <LogoMark />
                 <span>
                   MoHawk Designs
-                  <small>Websites for churches &amp; small businesses</small>
+                  <small>Websites for businesses on the move</small>
                 </span>
               </a>
               <nav className="mhd-nav" aria-label="MoHawk page navigation">
                 <a href="#why">Why AI</a>
                 <a href="#process">How it works</a>
-                <a href="#work">Our work</a>
+                <a href="#work">Work</a>
                 <a href="#faq">Questions</a>
                 <a className="mhd-btn mhd-btn-primary" href="#consult">Free consultation</a>
               </nav>
@@ -314,48 +338,56 @@ export default function WebDesignPage() {
             <section className="mhd-hero mhd-section" aria-labelledby="hero-title" style={{ paddingTop: 40, paddingBottom: 0 }}>
               <div className="mhd-wrap mhd-hero-grid">
                 <div>
-                  <h1 id="hero-title" className="mhd-h1">A website your church can actually keep up&nbsp;to&nbsp;date.</h1>
+                  <Image
+                    src="/web-design/mohawk-logo.png"
+                    alt="MoHawk Designs logo"
+                    width={900}
+                    height={900}
+                    className="mhd-hero-logo"
+                    priority
+                  />
+                  <h1 id="hero-title" className="mhd-h1">Websites with an edge.</h1>
                   <p className="mhd-lede" style={{ margin: '24px 0 34px' }}>
-                    MoHawk Designs builds modern, mobile-friendly websites for churches and small businesses around New Orleans, then teaches your team how to update them. No waiting on a developer to change a service time.
+                    Bold, fast, mobile-first websites for businesses on the move. Built with AI, shaped by hand, and handed over with training, so you're never stuck waiting on a developer to change a headline.
                   </p>
                   <div className="mhd-hero-ctas">
                     <a className="mhd-btn mhd-btn-primary" href="#consult">Book a free consultation</a>
-                    <a className="mhd-btn mhd-btn-ghost" href="#work">See a finished site</a>
+                    <a className="mhd-btn mhd-btn-ghost" href="#work">See the work</a>
                   </div>
                   <p style={{ marginTop: 22, fontSize: 16, color: '#536866' }}>
-                    Serving Kenner, Metairie, New Orleans and churches anywhere in Louisiana.
+                    Based in New Orleans. Building for anyone, anywhere.
                   </p>
                 </div>
 
                 <figure className="mhd-devices">
-                  <div className="mhd-browser">
-                    <div className="mhd-browser-bar">
-                      <span className="mhd-browser-dot" />
-                      <span className="mhd-browser-dot" />
-                      <span className="mhd-browser-dot" />
-                      <span className="mhd-browser-url">newmountbethel.org</span>
+                  <Link className="mhd-device-link" href="/" aria-label="Visit MoniqueHawkins.com">
+                    <div className="mhd-browser">
+                      <div className="mhd-browser-bar">
+                        <span className="mhd-browser-dot" />
+                        <span className="mhd-browser-dot" />
+                        <span className="mhd-browser-dot" />
+                        <span className="mhd-browser-url">moniquehawkins.com</span>
+                      </div>
+                      <Image
+                        src="/web-design/mh-desktop.jpg"
+                        width={1440}
+                        height={900}
+                        alt="Home page of MoniqueHawkins.com on a laptop"
+                        priority
+                      />
                     </div>
-                    <Image
-                      src="/web-design/nmb-desktop.jpg"
-                      width={1440}
-                      height={900}
-                      alt="Home page of the New Mount Bethel Baptist Church website on a laptop"
-                      priority
-                    />
-                  </div>
-                  <div className="mhd-phone">
-                    <Image
-                      src="/web-design/nmb-phone.jpg"
-                      width={600}
-                      height={1298}
-                      alt="The same church website on a phone"
-                    />
-                  </div>
+                    <div className="mhd-phone">
+                      <Image
+                        src="/web-design/mh-phone.jpg"
+                        width={600}
+                        height={1298}
+                        alt="MoniqueHawkins.com on a phone"
+                      />
+                    </div>
+                  </Link>
                   <figcaption className="mhd-figcap">
                     Built by MoHawk Designs:{' '}
-                    <a href="https://newmountbethel.org" target="_blank" rel="noopener noreferrer">
-                      New Mount Bethel Baptist Church
-                    </a>
+                    <Link href="/">MoniqueHawkins.com</Link>
                   </figcaption>
                 </figure>
               </div>
@@ -367,7 +399,7 @@ export default function WebDesignPage() {
                 <div className="mhd-section-head">
                   <h2 id="why-title" className="mhd-h2">Why build your site with AI?</h2>
                   <p>
-                    AI lets one experienced builder do the work of a whole agency, so you get a custom site in weeks instead of months, at a price a small congregation can manage. You still get a real person guiding every decision.
+                    AI lets one experienced builder move at the speed of a whole agency, so you get a custom site in weeks instead of months, at a price that makes sense for a growing business. A real person still guides every decision.
                   </p>
                 </div>
 
@@ -376,42 +408,42 @@ export default function WebDesignPage() {
                     <IconClock />
                     <div>
                       <h3 className="mhd-h3">Built in weeks, not months</h3>
-                      <p>Pages, photos and scripture come together quickly, and you review a live preview link as it grows.</p>
+                      <p>You watch it come together on a live preview link, not in a monthly status meeting.</p>
                     </div>
                   </div>
                   <div className="mhd-benefit">
                     <IconEdit />
                     <div>
-                      <h3 className="mhd-h3">Updates are quick and cheap</h3>
-                      <p>New sermon series, a new ministry leader, a flyer for Sunday: changes take minutes, not a work order.</p>
+                      <h3 className="mhd-h3">Changes in minutes</h3>
+                      <p>New offer, new hours, new hire, new launch: updates take minutes, not a work order.</p>
                     </div>
                   </div>
                   <div className="mhd-benefit">
                     <IconLock />
                     <div>
                       <h3 className="mhd-h3">You own everything</h3>
-                      <p>Your site's files live in a GitHub account in your church's name. No lock-in, no hostage situations if a volunteer moves on.</p>
+                      <p>Your site's files live in an account in your name. No lock-in, no hostage situations when a vendor disappears.</p>
                     </div>
                   </div>
                   <div className="mhd-benefit">
                     <IconGlobe />
                     <div>
                       <h3 className="mhd-h3">Low running costs</h3>
-                      <p>Hosting for a site like a church's is often free or low-cost. Your main expense is your domain name, usually about $10 to $25 a year.</p>
+                      <p>Hosting is often free or low-cost. Your main expense is your domain name, usually about $10 to $25 a year.</p>
                     </div>
                   </div>
                   <div className="mhd-benefit">
                     <IconPhone />
                     <div>
-                      <h3 className="mhd-h3">Easy to read on every device</h3>
-                      <p>Large, clear text and buttons that work for your youngest members and your mothers of the church alike, on phones, tablets and computers.</p>
+                      <h3 className="mhd-h3">Built for phones first</h3>
+                      <p>Most people will find you on a phone. Every page is designed for a thumb first, then scaled up for tablets and laptops.</p>
                     </div>
                   </div>
                   <div className="mhd-benefit">
                     <IconSearch />
                     <div>
                       <h3 className="mhd-h3">Found on Google</h3>
-                      <p>Every site is set up so people searching "churches near me" can find your service times, address and directions.</p>
+                      <p>Every site launches with the search basics done right, so people looking for what you do can actually find you.</p>
                     </div>
                   </div>
                 </div>
@@ -428,8 +460,8 @@ export default function WebDesignPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><th scope="row">Time to launch</th><td data-label="Typical web agency">Often several months</td><td data-label="Do-it-yourself builders">Depends on your volunteers</td><td data-label="MoHawk Designs">Usually a few weeks</td></tr>
-                      <tr><th scope="row">Design</th><td data-label="Typical web agency">Custom</td><td data-label="Do-it-yourself builders">Template</td><td data-label="MoHawk Designs">Custom, built around your church</td></tr>
+                      <tr><th scope="row">Time to launch</th><td data-label="Typical web agency">Often several months</td><td data-label="Do-it-yourself builders">Depends on your free time</td><td data-label="MoHawk Designs">Usually a few weeks</td></tr>
+                      <tr><th scope="row">Design</th><td data-label="Typical web agency">Custom</td><td data-label="Do-it-yourself builders">Template</td><td data-label="MoHawk Designs">Custom, built around your brand</td></tr>
                       <tr><th scope="row">Making changes</th><td data-label="Typical web agency">Billed per request</td><td data-label="Do-it-yourself builders">You do it all</td><td data-label="MoHawk Designs">You're trained, with help when you need it</td></tr>
                       <tr><th scope="row">Monthly cost</th><td data-label="Typical web agency">Hosting and maintenance fees</td><td data-label="Do-it-yourself builders">Subscription plan</td><td data-label="MoHawk Designs">Often free or low-cost hosting</td></tr>
                       <tr><th scope="row">Who owns it</th><td data-label="Typical web agency">Varies by contract</td><td data-label="Do-it-yourself builders">The platform</td><td data-label="MoHawk Designs">You do</td></tr>
@@ -444,63 +476,97 @@ export default function WebDesignPage() {
               <div className="mhd-wrap">
                 <div className="mhd-section-head">
                   <h2 id="process-title" className="mhd-h2">How it works</h2>
-                  <p>Six steps from first conversation to a site your team runs with confidence.</p>
+                  <p>Six steps from first conversation to a site you run with confidence.</p>
                 </div>
                 <ol className="mhd-steps">
                   <li className="mhd-step">
                     <h3 className="mhd-h3">Free consultation</h3>
-                    <p>We talk about your church or business, who you want to reach, and what your current site is missing.</p>
+                    <p>We talk about your business, who you want to reach, and what your current site is missing.</p>
                   </li>
                   <li className="mhd-step">
                     <h3 className="mhd-h3">Gather your story</h3>
-                    <p>Bulletins, photos, ministry details, scripture and leadership bios. Send what you have; we organize it.</p>
+                    <p>Logo, photos, services, team bios and whatever you already have. Send it messy; we organize it.</p>
                   </li>
                   <li className="mhd-step">
                     <h3 className="mhd-h3">Design and build</h3>
-                    <p>Your site is built with AI and shaped by hand, with a private preview link you can share with your committee.</p>
+                    <p>Your site is built with AI and shaped by hand, with a private preview link you can share with your team.</p>
                   </li>
                   <li className="mhd-step">
                     <h3 className="mhd-h3">Review together</h3>
-                    <p>Leadership gives feedback, and we refine names, photos and wording until everyone is comfortable.</p>
+                    <p>You give feedback, and we refine wording, photos and layout until it feels like you.</p>
                   </li>
                   <li className="mhd-step">
                     <h3 className="mhd-h3">Launch on your domain</h3>
-                    <p>We connect your web address, keeping your old site up until leadership gives the go-ahead.</p>
+                    <p>We connect your web address, keeping your old site up until you give the go-ahead.</p>
                   </li>
                   <li className="mhd-step">
                     <h3 className="mhd-h3">Training and support</h3>
-                    <p>Your team learns to update service times, events and photos, with support when you need a hand.</p>
+                    <p>You learn to update hours, offers, events and photos, with support when you need a hand.</p>
                   </li>
                 </ol>
               </div>
             </section>
 
-            {/* ── Featured Work ── */}
+            {/* ── Featured Work: each card opens the live site ── */}
             <section className="mhd-section" id="work" aria-labelledby="work-title">
-              <div className="mhd-wrap mhd-work-grid">
-                <Image
-                  src="/web-design/nmb-desktop.jpg"
-                  width={1440}
-                  height={900}
-                  alt="New Mount Bethel Baptist Church website home page"
-                  loading="lazy"
-                  style={{ borderRadius: 12, border: '1px solid #CFDCDA', boxShadow: '0 24px 50px -24px rgba(15,58,61,0.5)' }}
-                />
-                <div>
-                  <h2 id="work-title" className="mhd-h2">New Mount Bethel Baptist Church</h2>
-                  <p className="mhd-lede" style={{ marginTop: 16 }}>
-                    Kenner, Louisiana. A congregation serving the Lincoln Manor community since 1957, moving from an outdated site to one that reflects who they are.
-                  </p>
-                  <ul className="mhd-work-list">
-                    <li>Service times, directions and online giving front and center</li>
-                    <li>Pages for every ministry, the pastor and associate ministers</li>
-                    <li>Scripture throughout, in King James or easy-reading versions</li>
-                    <li>Sunday worship streamed and archived on YouTube</li>
-                    <li>Built to read clearly on phones, tablets and computers</li>
-                  </ul>
-                  <a className="mhd-btn mhd-btn-ghost" href="https://newmountbethel.org" target="_blank" rel="noopener noreferrer">
-                    Visit the live site
-                  </a>
+              <div className="mhd-wrap">
+                <div className="mhd-section-head">
+                  <h2 id="work-title" className="mhd-h2">Recent work</h2>
+                  <p>Three very different clients, three very different looks. Tap any project to visit the live site.</p>
+                </div>
+                <div className="mhd-projects">
+                  {[
+                    {
+                      href: '/',
+                      external: false,
+                      img: '/web-design/mh-desktop.jpg',
+                      w: 1440,
+                      h: 900,
+                      tag: 'Personal brand · Consulting',
+                      title: 'MoniqueHawkins.com',
+                      blurb: 'An editorial, black-and-white brand site for an AI workflow consultant, with animated sections, a contact form and newsletter signup.',
+                    },
+                    {
+                      href: 'https://pickleballfloridausa.com',
+                      external: true,
+                      img: '/images/pickleball-florida.png',
+                      w: 1895,
+                      h: 833,
+                      tag: 'Media · E-commerce',
+                      title: 'PickleballFloridaUSA.com',
+                      blurb: 'A Florida pickleball hub with court maps, tournament listings, an original blog and an online shop.',
+                    },
+                    {
+                      href: 'https://newmountbethel.org',
+                      external: true,
+                      img: '/web-design/nmb-desktop.jpg',
+                      w: 1440,
+                      h: 900,
+                      tag: 'Community organization',
+                      title: 'New Mount Bethel',
+                      blurb: 'A refreshed home online for a long-standing congregation: service times, online giving, leadership pages and streamed services.',
+                    },
+                  ].map((p) => {
+                    const card = (
+                      <>
+                        <div className="mhd-project-img">
+                          <Image src={p.img} width={p.w} height={p.h} alt={`Home page of ${p.title}`} loading="lazy" />
+                        </div>
+                        <div className="mhd-project-body">
+                          <span className="mhd-project-tag">{p.tag}</span>
+                          <h3 className="mhd-h3">{p.title}</h3>
+                          <p>{p.blurb}</p>
+                          <span className="mhd-project-go">Visit the live site {p.external ? '↗' : '→'}</span>
+                        </div>
+                      </>
+                    )
+                    // Outside sites open in a new tab; MoniqueHawkins.com opens in the same tab
+                    return p.external ? (
+                      <a key={p.title} className="mhd-project" href={p.href} target="_blank" rel="noopener noreferrer">{card}</a>
+                    ) : (
+                      <Link key={p.title} className="mhd-project" href={p.href}>{card}</Link>
+                    )
+                  })}
                 </div>
               </div>
             </section>
@@ -511,17 +577,17 @@ export default function WebDesignPage() {
                 <div>
                   <h2 id="training-title" className="mhd-h2">You won't be left with a site nobody knows how to change.</h2>
                   <p className="mhd-lede" style={{ marginTop: 20 }}>
-                    Training is part of every project. MoHawk Designs comes from years of teaching adults to use technology, so lessons are patient, plain-spoken and at your team's pace.
+                    Training is part of every project. MoHawk Designs comes from years of teaching adults to use technology, so lessons are patient, plain-spoken and at your pace.
                   </p>
                 </div>
                 <ul className="mhd-checklist">
                   {[
-                    'Update service times, events and announcements',
-                    'Swap in new photos and flyers',
-                    'Add a new ministry leader or contact',
+                    'Update hours, events and announcements',
+                    'Swap in new photos and promos',
+                    'Add a new team member or service',
                     'Use AI tools safely to draft and make changes',
                     'Publish changes and check them on your phone',
-                    'A simple written guide your team keeps',
+                    'A plain-English guide you keep',
                   ].map((item) => (
                     <li key={item}>
                       <IconCheck />
@@ -540,27 +606,27 @@ export default function WebDesignPage() {
                   {[
                     {
                       q: 'How much does a website cost?',
-                      a: "Every church and business is different, so pricing is set after a free consultation, once we know which pages and features you need. You'll get a clear quote before any work starts.",
+                      a: "Every business is different, so pricing is set after a free consultation, once we know which pages and features you need. You'll get a clear quote before any work starts.",
                     },
                     {
                       q: 'Do we need our own domain name?',
-                      a: "Yes. Your domain is your web address, like yourchurch.org. If you already have one, we connect your new site to it. If you don't, we'll help you register one in your church's name, usually for about $10 to $25 a year.",
+                      a: "Yes. Your domain is your web address, like yourbusiness.com. If you already have one, we connect your new site to it. If you don't, we'll help you register one in your name, usually for about $10 to $25 a year.",
                     },
                     {
                       q: 'What does "built with AI" mean? Is it a template?',
-                      a: "No. AI speeds up the writing of the site's code, and a person designs and checks every page. Your site is custom to your church, using your own photos, history and words.",
+                      a: "No. AI speeds up the writing of the site's code, and a person designs and checks every page. Your site is custom to your business, using your own photos, story and words.",
                     },
                     {
                       q: 'Will we own the website?',
-                      a: "Yes. The site's files are kept in a GitHub account owned by your church or business. If you ever want someone else to work on it, everything is yours to hand over.",
+                      a: "Yes. The site's files are kept in an account owned by you. If you ever want someone else to work on it, everything is yours to hand over.",
                     },
                     {
                       q: 'Can our current site stay up while the new one is built?',
-                      a: 'Yes. You review the new site on a private preview link. Your current site stays live until your leadership approves the switch.',
+                      a: 'Yes. You review the new site on a private preview link. Your current site stays live until you approve the switch.',
                     },
                     {
-                      q: "Our members aren't very technical. Will they be able to use it?",
-                      a: 'That is who these sites are designed for: large text, clear buttons, and service times and directions easy to find on any phone.',
+                      q: "I'm not technical. Will I be able to run it?",
+                      a: "That's the whole point. Training is built into every project, you get a plain-English guide to keep, and help is a phone call away.",
                     },
                   ].map(({ q, a }) => (
                     <details key={q}>
@@ -577,12 +643,12 @@ export default function WebDesignPage() {
               <div className="mhd-wrap mhd-cta-grid">
                 <div>
                   <h2 id="consult-title" className="mhd-h2">Start with a free consultation.</h2>
-                  <p>Tell us about your church or business and what you'd like your website to do. There's no cost and no obligation.</p>
+                  <p>Tell us about your business and what you want your website to do. There's no cost and no obligation.</p>
                 </div>
                 <div className="mhd-cta-box">
                   <h3 className="mhd-h3">What happens next</h3>
                   <ol className="mhd-cta-ol">
-                    <li>Send a short email with your name, church or business, and the best time to talk.</li>
+                    <li>Send a short email with your name, your business, and the best time to talk.</li>
                     <li>We'll set up a 30-minute conversation by phone or video.</li>
                     <li>You get a plan and a clear quote.</li>
                   </ol>
@@ -605,8 +671,8 @@ export default function WebDesignPage() {
           <footer className="mhd-footer">
             <div className="mhd-wrap mhd-footer-inner">
               <span className="mhd-brand">MoHawk Designs</span>
-              <span>Church and small business websites in New Orleans, Louisiana</span>
-              <span>© {new Date().getFullYear()} MoHawk Designs · <a href="/">A Monique Hawkins studio</a></span>
+              <span>Websites for businesses on the move</span>
+              <span>© {new Date().getFullYear()} MoHawk Designs · <Link href="/">A Monique Hawkins studio</Link></span>
             </div>
           </footer>
 
