@@ -1,17 +1,21 @@
+import Link from 'next/link'
+import { ARTICLES, articleUrl } from '../insights/articles'
+
 export default function Insights() {
+  const latest = ARTICLES[0]
   const articles = [
     {
-      category: 'Legal AI',
-      date: 'Coming Soon',
-      title: 'Why Most Law Firms Will Get Copilot Wrong — And How to Not Be One of Them',
-      excerpt: 'The technology is ready. The workflows aren\'t. Here\'s what I\'ve seen and what actually needs to change.',
-      readTime: '8 min read',
+      category: latest.category,
+      date: latest.date,
+      title: latest.title,
+      excerpt: latest.excerpt,
+      readTime: latest.readTime,
       featured: true,
     },
     {
       category: 'Workflow',
       date: 'Coming Soon',
-      title: 'The 5 Copilot Prompts Every Attorney Needs',
+      title: 'The 5 Copilot Prompts Every Knowledge Worker Needs to Know',
       readTime: '5 min read',
     },
     {
@@ -56,19 +60,24 @@ export default function Insights() {
               Workflow Intelligence
             </h2>
           </div>
-          <span style={{
+          <Link href="/insights" style={{
             fontFamily: '"IBM Plex Mono", monospace',
             fontSize: '11px',
             letterSpacing: '0.08em',
             textTransform: 'uppercase',
-            opacity: 0.4,
+            opacity: 0.6,
+            color: 'inherit',
+            textDecoration: 'none',
           }}>
             All Insights →
-          </span>
+          </Link>
         </div>
 
-        {/* Featured article */}
-        <div style={{
+        {/* Featured article — links to the newest published article */}
+        <Link href={articleUrl(latest.slug)} style={{
+          display: 'block',
+          color: 'inherit',
+          textDecoration: 'none',
           background: '#141414',
           padding: '40px',
           marginBottom: '2px',
@@ -125,11 +134,13 @@ export default function Insights() {
           <span style={{
             fontFamily: '"IBM Plex Mono", monospace',
             fontSize: '10px',
-            opacity: 0.3,
+            opacity: 0.6,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
           }}>
-            {articles[0].readTime}
+            {articles[0].readTime} · Read the article →
           </span>
-        </div>
+        </Link>
 
         {/* Two-column grid */}
         <div style={{

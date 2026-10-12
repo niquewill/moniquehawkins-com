@@ -1,6 +1,9 @@
 'use client'
 
 import NewsletterForm from '../components/NewsletterForm'
+import Image from 'next/image'
+import Link from 'next/link'
+import { ARTICLES, articleUrl } from './articles'
 
 import { useState } from 'react'
 
@@ -87,84 +90,61 @@ export default function InsightsPage() {
         )})}
       </section>
 
-      {/* ── Featured Article ──────────────────────────────────────── */}
+      {/* ── Featured Article (the newest published article) ─────── */}
       <section style={{
         maxWidth: '1200px',
         margin: '0 auto',
         borderBottom: '1px solid rgba(245,241,232,0.15)',
       }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          minHeight: '480px',
-        }}>
-
-          {/* Visual panel */}
+        <Link href={articleUrl(featuredArticle.slug)} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
           <div style={{
-            background: '#0D1520',
-            borderRight: '1px solid rgba(245,241,232,0.15)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-            padding: '48px',
-            position: 'relative',
-            overflow: 'hidden',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            minHeight: '440px',
           }}>
-            <span style={{
-              position: 'absolute',
-              top: '-20px',
-              right: '-10px',
-              fontFamily: '"DM Serif Display", Georgia, serif',
-              fontSize: 'clamp(120px, 18vw, 220px)',
-              fontWeight: 400,
-              color: '#FAFAFA',
-              opacity: 0.03,
-              lineHeight: 1,
-              userSelect: 'none',
-              pointerEvents: 'none',
-              fontStyle: 'italic',
+
+            {/* Visual panel */}
+            <div style={{
+              position: 'relative',
+              minHeight: '280px',
+              borderRight: '1px solid rgba(245,241,232,0.15)',
+              overflow: 'hidden',
+              background: '#111',
             }}>
-              AI
-            </span>
-            <div style={{ position: 'relative', zIndex: 1 }}>
+              <Image
+                src={featuredArticle.image}
+                alt={featuredArticle.imageAlt}
+                fill
+                sizes="(max-width: 760px) 100vw, 600px"
+                style={{ objectFit: 'cover', objectPosition: '60% center' }}
+                priority
+              />
               <span style={{
-                display: 'inline-block',
+                position: 'absolute',
+                top: '24px',
+                left: '24px',
                 fontFamily: '"IBM Plex Mono", monospace',
                 fontSize: '10px',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
                 color: '#F5F1E8',
-                opacity: 0.5,
-                border: '1px solid rgba(245,241,232,0.2)',
+                background: 'rgba(10,10,10,0.7)',
+                border: '1px solid rgba(245,241,232,0.3)',
                 padding: '4px 10px',
-                marginBottom: '20px',
               }}>
                 Featured
               </span>
-              <p style={{
-                fontFamily: '"DM Serif Display", Georgia, serif',
-                fontStyle: 'italic',
-                fontSize: 'clamp(22px, 3vw, 36px)',
-                lineHeight: 1.25,
-                color: '#F5F1E8',
-                textShadow: '0 0 40px rgba(245,241,232,0.2)',
-                maxWidth: '400px',
-              }}>
-                Why Most Organizations Will Get Copilot Wrong — And How to Not Be One of Them
-              </p>
             </div>
-          </div>
 
-          {/* Content panel */}
-          <div style={{
-            padding: '48px clamp(24px, 5vw, 64px)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            gap: '32px',
-          }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            {/* Content panel */}
+            <div style={{
+              padding: '48px clamp(24px, 5vw, 64px)',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              gap: '24px',
+            }}>
+              <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
                 <span
                   onMouseEnter={() => setHoveredHeroTag(true)}
                   onMouseLeave={() => setHoveredHeroTag(false)}
@@ -175,89 +155,52 @@ export default function InsightsPage() {
                     transition: 'all 0.25s',
                   }}
                 >
-                  AI Adoption
+                  {featuredArticle.category}
                 </span>
-                <span style={{
-                  fontFamily: '"IBM Plex Mono", monospace',
-                  fontSize: '11px',
-                  opacity: 0.35,
-                }}>
-                  Coming Soon
+                <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '11px', opacity: 0.45 }}>
+                  {featuredArticle.date}
                 </span>
               </div>
 
               <h2 style={{
                 fontFamily: '"DM Serif Display", Georgia, serif',
                 fontStyle: 'italic',
-                fontSize: 'clamp(24px, 3vw, 40px)',
-                lineHeight: 1.15,
+                fontSize: 'clamp(28px, 3.4vw, 44px)',
+                lineHeight: 1.1,
                 fontWeight: 400,
                 color: '#F5F1E8',
               }}>
-                Why Most Organizations Will Get Copilot Wrong — And How to Not Be One of Them
+                {featuredArticle.title}
               </h2>
 
               <p style={{
                 fontFamily: '"IBM Plex Mono", monospace',
                 fontSize: '14px',
                 lineHeight: 1.85,
-                opacity: 0.55,
+                opacity: 0.6,
               }}>
-                The technology is ready. The training isn&apos;t. Here&apos;s what I keep
-                seeing in the field — and the decisions that separate successful
-                Copilot rollouts from expensive mistakes.
+                {featuredArticle.excerpt}
               </p>
 
               <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
                 <span style={{
                   fontFamily: '"IBM Plex Mono", monospace',
-                  fontSize: '11px',
-                  opacity: 0.4,
-                }}>
-                  8 min read
-                </span>
-                <div style={{ flex: 1, height: '1px', background: 'rgba(245,241,232,0.1)' }} />
-              </div>
-            </div>
-
-            <div style={{
-              border: '1px solid rgba(245,241,232,0.15)',
-              padding: '20px 24px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '16px',
-            }}>
-              <p style={{
-                fontFamily: '"IBM Plex Mono", monospace',
-                fontSize: '12px',
-                lineHeight: 1.7,
-                opacity: 0.5,
-                flex: 1,
-              }}>
-                This article is in progress. Subscribe to be notified when it publishes.
-              </p>
-              <a
-                href="#newsletter"
-                style={{
-                  fontFamily: '"IBM Plex Mono", monospace',
-                  fontSize: '11px',
+                  fontSize: '12px',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                   color: 'var(--color-ink)',
                   background: '#F5F1E8',
-                  textDecoration: 'none',
-                  padding: '10px 20px',
-                  whiteSpace: 'nowrap',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#FFFFFF' }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#F5F1E8' }}
-              >
-                Notify Me →
-              </a>
+                  padding: '12px 20px',
+                }}>
+                  Read the article →
+                </span>
+                <span style={{ fontFamily: '"IBM Plex Mono", monospace', fontSize: '11px', opacity: 0.4 }}>
+                  {featuredArticle.readTime}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
       </section>
 
       {/* ── Article Grid ─────────────────────────────────────────── */}
@@ -278,8 +221,10 @@ export default function InsightsPage() {
           gap: '2px',
           background: 'rgba(245,241,232,0.08)',
         }}>
-          {(selectedCategory === 'All' ? articles : articles.filter(a => a.category === selectedCategory)).map((article, i) => (
-            <div key={i} style={{
+          {(selectedCategory === 'All' ? articles : articles.filter(a => a.category === selectedCategory)).map((article, i) => {
+            const Card = (
+            <div style={{
+              height: '100%',
               background: 'var(--color-ink)',
               padding: '36px 32px',
               display: 'flex',
@@ -320,9 +265,9 @@ export default function InsightsPage() {
                 <span style={{
                   fontFamily: '"IBM Plex Mono", monospace',
                   fontSize: '10px',
-                  opacity: 0.3,
+                  opacity: article.href ? 0.55 : 0.3,
                 }}>
-                  Coming Soon
+                  {article.date ?? 'Coming Soon'}
                 </span>
               </div>
 
@@ -365,15 +310,23 @@ export default function InsightsPage() {
                 <span style={{
                   fontFamily: '"IBM Plex Mono", monospace',
                   fontSize: '10px',
-                  opacity: 0.25,
+                  opacity: article.href ? 0.85 : 0.25,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                 }}>
-                  In Progress
+                  {article.href ? 'Read →' : 'In Progress'}
                 </span>
               </div>
             </div>
-          ))}
+            )
+            return article.href ? (
+              <Link key={i} href={article.href} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+                {Card}
+              </Link>
+            ) : (
+              <div key={i}>{Card}</div>
+            )
+          })}
         </div>
       </section>
 
@@ -423,13 +376,20 @@ const categories = [
   'Technology Training', 'Professional Development', 'Field Notes',
 ]
 
-const articles = [
-  {
-    category: 'AI Adoption',
-    title: 'Why Most Organizations Will Get Copilot Wrong — And How to Not Be One of Them',
-    excerpt: 'The technology is ready. The training isn\'t. Here\'s what separates successful deployments from expensive mistakes.',
-    readTime: '8 min read',
-  },
+const featuredArticle = ARTICLES[0]
+
+type GridArticle = { category: string; title: string; excerpt: string; readTime: string; href?: string; date?: string }
+
+const articles: GridArticle[] = [
+  // Published articles come first, straight from articles.ts
+  ...ARTICLES.map((a) => ({
+    category: a.category,
+    title: a.title,
+    excerpt: a.excerpt,
+    readTime: a.readTime,
+    href: articleUrl(a.slug),
+    date: a.date,
+  })),
   {
     category: 'Technology Training',
     title: 'You Paid for the Tool. Now Teach It.',
