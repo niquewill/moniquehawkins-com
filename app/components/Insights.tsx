@@ -3,7 +3,8 @@ import { ARTICLES, articleUrl } from '../insights/articles'
 
 export default function Insights() {
   const latest = ARTICLES[0]
-  const articles = [
+  const previous = ARTICLES[1]
+  const articles: { category: string; date: string; title: string; excerpt?: string; readTime: string; featured?: boolean; href?: string }[] = [
     {
       category: latest.category,
       date: latest.date,
@@ -12,12 +13,10 @@ export default function Insights() {
       readTime: latest.readTime,
       featured: true,
     },
-    {
-      category: 'Workflow',
-      date: 'Coming Soon',
-      title: 'The 5 Copilot Prompts Every Knowledge Worker Needs to Know',
-      readTime: '5 min read',
-    },
+    // Second card: the previous published article, or a placeholder if there isn't one yet
+    previous
+      ? { category: previous.category, date: previous.date, title: previous.title, readTime: previous.readTime, href: articleUrl(previous.slug) }
+      : { category: 'Workflow', date: 'Coming Soon', title: 'The 5 Copilot Prompts Every Knowledge Worker Needs to Know', readTime: '5 min read' },
     {
       category: 'AI Training',
       date: 'Coming Soon',
@@ -148,12 +147,13 @@ export default function Insights() {
           gridTemplateColumns: '1fr 1fr',
           gap: '2px',
         }}>
-          {articles.slice(1).map((article) => (
+          {articles.slice(1).map((article) => {
+            const card = (
             <div
-              key={article.title}
               style={{
                 background: '#141414',
                 padding: '32px',
+                height: '100%',
               }}
             >
               <div style={{
@@ -201,7 +201,15 @@ export default function Insights() {
                 {article.readTime}
               </span>
             </div>
-          ))}
+            )
+            return article.href ? (
+              <Link key={article.title} href={article.href} style={{ color: 'inherit', textDecoration: 'none', display: 'block' }}>
+                {card}
+              </Link>
+            ) : (
+              <div key={article.title}>{card}</div>
+            )
+          })}
         </div>
 
       </div>

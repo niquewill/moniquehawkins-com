@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/methodology', priority: 0.8, freq: 'monthly' },
     { path: '/work', priority: 0.7, freq: 'monthly' },
     { path: '/insights', priority: 0.7, freq: 'monthly' },
+    { path: '/insights/ai-doesnt-fix-unclear-thinking', priority: 0.7, freq: 'yearly' },
     { path: '/insights/the-real-reason-ai-rollouts-fail', priority: 0.7, freq: 'yearly' },
     { path: '/web-design', priority: 0.7, freq: 'monthly' },
     { path: '/contact', priority: 0.6, freq: 'yearly' },

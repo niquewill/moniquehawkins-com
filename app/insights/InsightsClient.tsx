@@ -381,8 +381,9 @@ const featuredArticle = ARTICLES[0]
 type GridArticle = { category: string; title: string; excerpt: string; readTime: string; href?: string; date?: string }
 
 const articles: GridArticle[] = [
-  // Published articles come first, straight from articles.ts
-  ...ARTICLES.map((a) => ({
+  // Published articles come first, straight from articles.ts.
+  // The newest one is already in the Featured spot above, so it's skipped here.
+  ...ARTICLES.slice(1).map((a) => ({
     category: a.category,
     title: a.title,
     excerpt: a.excerpt,

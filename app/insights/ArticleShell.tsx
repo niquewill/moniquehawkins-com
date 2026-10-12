@@ -46,6 +46,11 @@ export default function ArticleShell({
         .mh-art-cite a { color: #F5F1E8; opacity: 0.6; text-decoration: none; border-bottom: 1px solid rgba(245,241,232,0.3); }
         .mh-art-cite a:hover { opacity: 1; }
         .mh-art-pull { font-family: ${SERIF}; font-style: italic; font-size: clamp(24px, 3.6vw, 32px); line-height: 1.3; color: #F5F1E8; margin: 36px 0; padding-left: 24px; border-left: 2px solid #F5F1E8; }
+        .mh-art-prompt { margin: 8px 0 28px; padding: 20px 22px; border: 1px solid rgba(245,241,232,0.2); border-left: 3px solid #F5F1E8; background: #121212; }
+        .mh-art-prompt-label { font-family: ${MONO}; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: #F5F1E8; opacity: 0.55; margin: 0 0 10px; }
+        .mh-art-prompt p { font-family: ${MONO}; font-size: 14px; line-height: 1.75; color: #E8E4DC; margin: 0 0 8px; }
+        .mh-art-prompt p:last-child { margin-bottom: 0; }
+        .mh-art-prompt strong { color: #FFFFFF; }
         .mh-art-cta { margin: 56px 0 32px; padding: 32px clamp(20px, 4vw, 40px) 12px; border: 1px solid rgba(245,241,232,0.25); background: #121212; }
         .mh-art-cta-label { font-family: ${MONO}; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #F5F1E8; opacity: 0.75; margin: 0 0 18px; }
         .mh-art-cta-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 4px 0 26px; }
@@ -126,6 +131,14 @@ export const OL = ({ items }: { items: ReactNode[] }) => (
   <ol className="mh-art-list">
     {items.map((it, i) => <li key={i} className="mh-art-li">{it}</li>)}
   </ol>
+)
+
+// A sample prompt, shown like a typed message
+export const Prompt = ({ label = 'Prompt', lines }: { label?: string; lines: ReactNode[] }) => (
+  <div className="mh-art-prompt">
+    <p className="mh-art-prompt-label">{label}</p>
+    {lines.map((l, i) => <p key={i}>{l}</p>)}
+  </div>
 )
 
 // A short source link shown in parentheses after a statistic
